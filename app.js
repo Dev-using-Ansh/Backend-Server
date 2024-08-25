@@ -28,7 +28,7 @@ console.log("Connecting to database");
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
-app.use(cookieParser());
+// app.use(cookieParser());
 // for(let i=0; i<=; i++){
 //     let blog ={
 //         title : "title"+i,

@@ -1,8 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require("morgan");
-const BlogPost = require("./models/schemma.js");
+const BlogPost = require("./models/blogPost.js");
 const cors = require("cors");
+const authRoutes = require("./routes/authRoutes.js");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 const PORT = 3099;
@@ -25,20 +28,21 @@ console.log("Connecting to database");
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
-for(let i=0; i<=5; i++){
-    let blog ={
-        title : "title"+i,
-        content : "content"+i,
-        sector : "sector"+i,
-        author: "author"+i
-    }
-    BlogPost.create(blog)
-    .then(result =>{
-        console.log("Created Successfully");
-    }).catch(err=>{
-        console.log("There is error"+err.message);
-    })
-}
+app.use(cookieParser());
+// for(let i=0; i<=; i++){
+//     let blog ={
+//         title : "title"+i,
+//         content : "content"+i,
+//         sector : "sector"+i,
+//         author: "author"+i
+//     }
+    // BlogPost.create(blog)
+    // .then(result =>{
+    //     console.log("Created Successfully");
+    // }).catch(err=>{
+    //     console.log("There is error"+err.message);
+    // })
+// }
 
 app.get("/", (req,res) =>{
     res.send("Home Page");
@@ -90,3 +94,7 @@ app.delete("/blogs/:id", (req,res) =>{
         res.send("Error in Deleting");
     })
 })
+
+
+//authRoutes
+app.use("/auth" , authRoutes);

@@ -18,5 +18,5 @@ let blogSchema = new schema({
         required:true
     },
 },{timestamp:true})
-const blogObj = mongoose.model("blogModel",blogSchema,"blogCollection");
+const blogObj = mongoose.model("blogModel",blogSchema,"blogReactCollection");
 module.exports = blogObj;

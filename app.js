@@ -5,7 +5,7 @@ const BlogPost = require("./models/blogPost.js");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes.js");
 // const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const app = express();
 
 const PORT = 3099;
